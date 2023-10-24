@@ -193,9 +193,7 @@ func runApp(ctx context.Context, conf *config) error {
 
 				log.Info().
 					Int("port", conf.Port).
-					Str("version", buildinfo.Version).
-					Time("compiled_at", buildinfo.CompiledAtTime()).
-					Msg("WeTriage started.")
+					Msg("Listening for incoming requests.")
 
 				return http.ListenAndServe(
 					fmt.Sprintf(":%d", conf.Port),
@@ -207,6 +205,12 @@ func runApp(ctx context.Context, conf *config) error {
 }
 
 func main() {
+	log.Info().
+		Str("version", buildinfo.Version).
+		Str("revision", buildinfo.Revision).
+		Time("compiled_at", buildinfo.CompiledAtTime()).
+		Msg("Starting WeTriage service.")
+
 	conf := new(config)
 
 	app := &cli.App{

@@ -7,6 +7,8 @@ import "time"
 var (
 	// Version is the short commit hash or version tag of the executable.
 	Version = ""
+	// Revision is the short commit hash of the executable.
+	Revision = ""
 	// CompiledAt is the RFC3339 formatted time indicating that time of the compilation.
 	CompiledAt = ""
 
