@@ -90,9 +90,9 @@ jobs:
             BUILD_VERSION=${{ needs.prepare.outputs.BUILD_VERSION }}
             BUILD_REVISION=${{ needs.prepare.outputs.BUILD_REVISION }}
           tags: |
-            ghcr.io/imulab/WeTriage:latest
-            ghcr.io/imulab/WeTriage:${{ needs.prepare.outputs.BUILD_VERSION }}
-            ghcr.io/imulab/WeTriage:${{ needs.prepare.outputs.BUILD_REVISION }}
+            ghcr.io/imulab/wetriage:latest
+            ghcr.io/imulab/wetriage:${{ needs.prepare.outputs.BUILD_VERSION }}
+            ghcr.io/imulab/wetriage:${{ needs.prepare.outputs.BUILD_REVISION }}
             registry.cn-hangzhou.aliyuncs.com/elan-vision/wetriage:latest
             registry.cn-hangzhou.aliyuncs.com/elan-vision/wetriage:${{ needs.prepare.outputs.BUILD_VERSION }}
             registry.cn-hangzhou.aliyuncs.com/elan-vision/wetriage:${{ needs.prepare.outputs.BUILD_REVISION }}
