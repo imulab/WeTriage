@@ -170,7 +170,7 @@ func runApp(ctx context.Context, conf *config) error {
 			func(
 				logger *zerolog.Logger,
 				echoHandler *route.EchoHandler,
-				bizHandler route.BusinessDataHandler,
+				bizHandler *route.BusinessDataHandler,
 			) error {
 
 				mux := http.NewServeMux()

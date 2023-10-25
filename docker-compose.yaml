@@ -1,0 +1,55 @@
+version: "3.9"
+
+services:
+  wt:
+    image: "wetriage:latest"
+    restart: unless-stopped
+    build:
+      context: .
+    command:
+      - WeTriage
+      - -t
+      - suite_ticket_info
+    environment:
+      WT_PORT: 8080
+      WT_PATH: /callback
+      WT_TOKEN: 1LJbAzeLuO66bNUi4
+      WT_AES_KEY: TmDyxEdh8f9jE4sogcsGlvvLguNrdYoSrdgHGx2oFMa
+      WT_MQTT_URL: tcp://mosquitto:1883
+    ports:
+      - "8080:8080"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8080"]
+      start_period: 5s
+      timeout: 10s
+      interval: 30s
+      retries: 10
+    networks:
+      - wt
+
+  mosquitto:
+    image: eclipse-mosquitto:2.0.15
+    volumes:
+      - ./mosquitto.local.conf:/mosquitto/config/mosquitto.conf:ro
+      - mosquitto_persistence:/mosquitto/data
+      - mosquitto_log:/mosquitto/log
+    expose:
+      - "1883"
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mosquitto_sub", "-t", "$$SYS/#", "-C", "1", "-i", "healthcheck", "-W", "3"]
+      start_period: 5s
+      interval: 60s
+      timeout: 10s
+      retries: 5
+    networks:
+      - wt
+
+networks:
+  wt:
+    driver: bridge
+    name: wt
+
+volumes:
+  mosquitto_persistence:
+  mosquitto_log:

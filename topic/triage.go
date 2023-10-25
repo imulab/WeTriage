@@ -6,13 +6,13 @@ import (
 )
 
 // NewTriageStrategies returns a list of TriageStrategy implementations that are enabled by the given topic names.
-func NewTriageStrategies(prop Properties) ([]TriageStrategy, error) {
-	if len(prop.EnabledTopics) == 0 {
+func NewTriageStrategies(props *Properties) ([]TriageStrategy, error) {
+	if len(props.EnabledTopics) == 0 {
 		return nil, ErrNoTopicEnabled
 	}
 
 	var strategies []TriageStrategy
-	for _, each := range prop.EnabledTopics {
+	for _, each := range props.EnabledTopics {
 		switch each {
 		case SuiteTicketInfoName:
 			strategies = append(strategies, &suiteTicketInfoTriageStrategy{})
