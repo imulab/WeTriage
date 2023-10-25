@@ -1,5 +1,7 @@
 # WeTriage
 
+[中文](./README.zh.md)
+
 Triage callback XML messages from the WeCom (Enterprise WeChat) platform and convert them to JSON format before
 publishing them to a MQTT message broker for downstream consumption.
 
