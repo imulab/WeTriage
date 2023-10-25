@@ -1,16 +1,18 @@
 version: "3.9"
 
 services:
-  wt:
+  wt_server:
     image: "wetriage:latest"
     restart: unless-stopped
     build:
       context: .
     command:
       - WeTriage
+      - server
       - -t
       - suite_ticket_info
     environment:
+      WT_DEBUG: "true"
       WT_PORT: 8080
       WT_PATH: /callback
       WT_TOKEN: 1LJbAzeLuO66bNUi4
@@ -24,6 +26,20 @@ services:
       timeout: 10s
       interval: 30s
       retries: 10
+    networks:
+      - wt
+
+  wt_printer:
+    image: "wetriage:latest"
+    restart: unless-stopped
+    build:
+      context: .
+    command:
+      - WeTriage
+      - printer
+    environment:
+      WT_DEBUG: "true"
+      WT_MQTT_URL: tcp://mosquitto:1883
     networks:
       - wt
 

@@ -26,4 +26,4 @@ RUN apk add --no-cache curl
 
 COPY --from=builder /build/WeTriage /usr/bin/WeTriage
 
-CMD ["WeTriage"]
+CMD ["WeTriage", "server"]

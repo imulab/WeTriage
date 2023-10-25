@@ -49,7 +49,7 @@ docker run -d \
     -e WT_TOKEN=token \
     -e WT_AES_KEY=base64_encoded_aes_key \
     -e WT_MQTT_URL=tcp://localhost:1883 \
-    ghcr.io/imulab/wetriage:latest WeTriage -t suite_ticket_info
+    ghcr.io/imulab/wetriage:latest WeTriage server -t suite_ticket_info
 ```
 
 ## 消息话题
