@@ -21,7 +21,7 @@
 ## 如何使用
 
 ```bash
-docker pull ghcr.io/imulab/wetriage: latest
+docker pull ghcr.io/imulab/wetriage:latest
 
 # 对于特定版本，请使用短提交 SHA 作为标记。例如：
 # docker pull ghcr.io/imulab/wetriage:117eb11f
