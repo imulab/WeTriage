@@ -5,16 +5,19 @@ import (
 	"absurdlab.io/WeTriage/internal/httpx"
 	"absurdlab.io/WeTriage/topic"
 	"context"
+	"encoding/json"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"github.com/eclipse/paho.golang/autopaho"
 	"github.com/eclipse/paho.golang/paho"
+	"github.com/google/uuid"
 	"github.com/rs/zerolog"
 	"github.com/samber/lo"
 	"net/http"
 	"sort"
 	"strings"
+	"time"
 )
 
 func NewBusinessDataHandler(
@@ -128,19 +131,28 @@ func (h *BusinessDataHandler) triageMessage(messageBytes []byte) (topic.Topic, e
 }
 
 func (h *BusinessDataHandler) publishMessage(ctx context.Context, message topic.Topic) error {
-	if _, err := h.mqtt.Publish(ctx, &paho.Publish{
-		QoS:   2,
-		Topic: fmt.Sprintf("T/WeTriage/%s", message.Name()),
-		Properties: &paho.PublishProperties{
-			ContentType:            "application/json",
-			ResponseTopic:          "",
-			PayloadFormat:          nil,
-			MessageExpiry:          nil,
-			SubscriptionIdentifier: nil,
-			TopicAlias:             nil,
-			User:                   nil,
-		},
-		Payload: nil,
+	var payload = struct {
+		Id        string      `json:"id"`
+		CreatedAt int64       `json:"created_at"`
+		Topic     string      `json:"topic"`
+		Content   interface{} `json:"content"`
+	}{
+		Id:        uuid.NewString(),
+		CreatedAt: time.Now().Unix(),
+		Topic:     message.Name(),
+		Content:   message,
+	}
+
+	payloadBytes, err := json.Marshal(payload)
+	if err != nil {
+		return err
+	}
+
+	if _, err = h.mqtt.Publish(ctx, &paho.Publish{
+		QoS:        2,
+		Topic:      fmt.Sprintf("T/WeTriage/%s", message.Name()),
+		Properties: &paho.PublishProperties{ContentType: "application/json"},
+		Payload:    payloadBytes,
 	}); err != nil {
 		h.logger.Debug().Err(err).Msg("Failed to publish message to mqtt broker")
 		return err

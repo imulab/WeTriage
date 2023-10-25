@@ -4,6 +4,7 @@ go 1.20
 
 require (
 	github.com/eclipse/paho.golang v0.12.0
+	github.com/google/uuid v1.3.1
 	github.com/rs/zerolog v1.31.0
 	github.com/samber/lo v1.38.1
 	github.com/stretchr/testify v1.8.4

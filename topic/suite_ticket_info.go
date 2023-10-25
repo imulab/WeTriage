@@ -9,6 +9,9 @@ var (
 	_ TriageStrategy = (*suiteTicketInfoTriageStrategy)(nil)
 )
 
+// SuiteTicketInfo 推送suite_ticket. InfoType is always suite_ticket.
+//
+// https://developer.work.weixin.qq.com/document/path/97173
 type SuiteTicketInfo struct {
 	SuiteId     string `xml:"SuiteId" json:"suite_id"`
 	InfoType    string `xml:"InfoType" json:"info_type"`
