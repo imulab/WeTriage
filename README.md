@@ -57,9 +57,10 @@ docker run -d \
 
 Currently, the following topics are supported.
 
-| Topic               | Description                                                          |
-|---------------------|----------------------------------------------------------------------|
-| `suite_ticket_info` | [推送应用模板凭证](https://developer.work.weixin.qq.com/document/path/97173) |
+| Topic                       | Description                                                           |
+|-----------------------------|-----------------------------------------------------------------------|
+| `suite_ticket_info`         | [推送应用模板凭证](https://developer.work.weixin.qq.com/document/path/97173)  |
+| `reset_permanent_code_info` | [重置永久授权码通知](https://developer.work.weixin.qq.com/document/path/97175) |
 
 > More topics will be added as the project progresses. To request a topic, please open an issue.
 

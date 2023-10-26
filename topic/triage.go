@@ -15,7 +15,9 @@ func NewTriageStrategies(props *Properties) ([]TriageStrategy, error) {
 	for _, each := range props.EnabledTopics {
 		switch each {
 		case SuiteTicketInfoName:
-			strategies = append(strategies, &suiteTicketInfoTriageStrategy{})
+			strategies = append(strategies, suiteTicketInfoTriageStrategy{})
+		case ResetPermanentCodeInfoName:
+			strategies = append(strategies, resetPermanentCodeInfoTriageStrategy{})
 		default:
 			return nil, fmt.Errorf("%w: %s", ErrUnsupported, each)
 		}

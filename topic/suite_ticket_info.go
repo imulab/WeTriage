@@ -2,9 +2,11 @@ package topic
 
 import "encoding/xml"
 
-var (
+const (
 	SuiteTicketInfoName = "suite_ticket_info"
+)
 
+var (
 	_ Topic          = (*SuiteTicketInfo)(nil)
 	_ TriageStrategy = (*suiteTicketInfoTriageStrategy)(nil)
 )
