@@ -1,7 +1,7 @@
 package printer
 
 import (
-	"absurdlab.io/WeTriage/cmd"
+	"absurdlab.io/WeTriage/cmd/internal"
 	"absurdlab.io/WeTriage/internal/stringx"
 	"context"
 	"errors"
@@ -53,7 +53,7 @@ func newMqttClient(c *config, logger *zerolog.Logger) (*autopaho.ConnectionManag
 	ctx := context.Background()
 
 	var (
-		errorLogger             = cmd.NewPahoZeroLogger(logger)
+		errorLogger             = internal.NewPahoZeroLogger(logger)
 		debugLogger paho.Logger = paho.NOOPLogger{}
 	)
 	if c.Debug {

@@ -1,7 +1,7 @@
 package server
 
 import (
-	"absurdlab.io/WeTriage/cmd"
+	"absurdlab.io/WeTriage/cmd/internal"
 	"absurdlab.io/WeTriage/internal/httpx"
 	"absurdlab.io/WeTriage/internal/stringx"
 	"absurdlab.io/WeTriage/route"
@@ -107,7 +107,7 @@ func newMqttClient(c *config, logger *zerolog.Logger) (*autopaho.ConnectionManag
 	pahoConnUp := make(chan struct{})
 
 	var (
-		errorLogger             = cmd.NewPahoZeroLogger(logger)
+		errorLogger             = internal.NewPahoZeroLogger(logger)
 		debugLogger paho.Logger = paho.NOOPLogger{}
 	)
 	if c.Debug {
