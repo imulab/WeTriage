@@ -59,6 +59,7 @@ docker run -d \
 | 话题                          | 描述                                                                    |
 |-----------------------------|-----------------------------------------------------------------------|
 | `suite_ticket_info`         | [推送应用模板凭证](https://developer.work.weixin.qq.com/document/path/97173)  |
+| `create_auth_info`          | [授权成功通知](https://developer.work.weixin.qq.com/document/path/97174)    |
 | `reset_permanent_code_info` | [重置永久授权码通知](https://developer.work.weixin.qq.com/document/path/97175) |
 
 > 随着项目的进展，将添加更多主题。如果需要申请某个消息话题，请创建一个Issue。
