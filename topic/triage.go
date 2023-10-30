@@ -18,6 +18,8 @@ func NewTriageStrategies(props *Properties) ([]TriageStrategy, error) {
 			strategies = append(strategies, suiteTicketInfoTriageStrategy{})
 		case CreateAuthInfoName:
 			strategies = append(strategies, createAuthInfoTriageStrategy{})
+		case ChangeAuthInfoName:
+			strategies = append(strategies, changeAuthInfoTriageStrategy{})
 		case ResetPermanentCodeInfoName:
 			strategies = append(strategies, resetPermanentCodeInfoTriageStrategy{})
 		default:

@@ -56,11 +56,12 @@ docker run -d \
 
 当前，支持以下消息主题。
 
-| 话题                          | 描述                                                                    |
-|-----------------------------|-----------------------------------------------------------------------|
-| `suite_ticket_info`         | [推送应用模板凭证](https://developer.work.weixin.qq.com/document/path/97173)  |
-| `create_auth_info`          | [授权成功通知](https://developer.work.weixin.qq.com/document/path/97174)    |
-| `reset_permanent_code_info` | [重置永久授权码通知](https://developer.work.weixin.qq.com/document/path/97175) |
+| 话题                          | 描述                                                                                                                        |
+|-----------------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `suite_ticket_info`         | [推送应用模板凭证](https://developer.work.weixin.qq.com/document/path/97173)                                                      |
+| `create_auth_info`          | [授权成功通知](https://developer.work.weixin.qq.com/document/path/97174)                                                        |
+| `change_auth_info`          | [変更授权通知](https://developer.work.weixin.qq.com/document/path/97174#%E5%8F%98%E6%9B%B4%E6%8E%88%E6%9D%83%E9%80%9A%E7%9F%A5) |
+| `reset_permanent_code_info` | [重置永久授权码通知](https://developer.work.weixin.qq.com/document/path/97175)                                                     |
 
 > 随着项目的进展，将添加更多主题。如果需要申请某个消息话题，请创建一个Issue。
 
