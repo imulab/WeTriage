@@ -59,6 +59,7 @@ func (c *config) flags() []cli.Flag {
 			Usage:       "Enable handling for a supported topic",
 			Destination: &c.Topics,
 			Aliases:     []string{"t"},
+			EnvVars:     []string{"WT_TOPIC", "WT_TOPICS"},
 		},
 		&cli.StringFlag{
 			Name:        "mqtt-url",
