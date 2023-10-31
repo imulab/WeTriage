@@ -32,15 +32,15 @@ docker pull ghcr.io/imulab/wetriage:latest
 
 The following flags are supported:
 
-| Flag            | Description                                  | Default     | Env           |
-|-----------------|----------------------------------------------|-------------|---------------|
-| `--port`        | Port to listen on                            | `8080`      | `WT_PORT`     |
-| `--debug`       | Enable debug mode                            | `false`     | `WT_DEBUG`    |
-| `--path`        | Customize the callback endpoint path         | `/callback` | `WT_PATH`     |
-| `--token`       | Callback token registered with WeCom         | -           | `WT_TOKEN`    |
-| `--aes-key`     | Base64 encoded AES key registered with WeCom | -           | `WT_AES_KEY`  |
-| `--topic`, `-t` | Callback topic to process. See details below | -           | -             |
-| `--mqtt-url`    | MQTT broker URL. See details below           | -           | `WT_MQTT_URL` |
+| Flag            | Description                                  | Default     | Env                     |
+|-----------------|----------------------------------------------|-------------|-------------------------|
+| `--port`        | Port to listen on                            | `8080`      | `WT_PORT`               |
+| `--debug`       | Enable debug mode                            | `false`     | `WT_DEBUG`              |
+| `--path`        | Customize the callback endpoint path         | `/callback` | `WT_PATH`               |
+| `--token`       | Callback token registered with WeCom         | -           | `WT_TOKEN`              |
+| `--aes-key`     | Base64 encoded AES key registered with WeCom | -           | `WT_AES_KEY`            |
+| `--topic`, `-t` | Callback topic to process. See details below | -           | `WT_TOPICS`, `WT_TOPIC` |
+| `--mqtt-url`    | MQTT broker URL. See details below           | -           | `WT_MQTT_URL`           |
 
 Below shows an example of using the image.
 
@@ -50,7 +50,8 @@ docker run -d \
     -e WT_TOKEN=token \
     -e WT_AES_KEY=base64_encoded_aes_key \
     -e WT_MQTT_URL=tcp://localhost:1883 \
-    ghcr.io/imulab/wetriage:latest WeTriage server -t suite_ticket_info
+    -e WT_TOPICS=suite_ticket_info,create_auth_info \
+    ghcr.io/imulab/wetriage:latest
 ```
 
 ## Topics

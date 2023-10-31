@@ -31,15 +31,15 @@ docker pull ghcr.io/imulab/wetriage:latest
 
 支持以下标志：
 
-| 标志             | 描述                       | 默认          | 环境            |
-|----------------|--------------------------|-------------|---------------|
-| `--port`       | 要监听的端口                   | `8080`      | `WT_PORT`     |
-| `--debug`      | 启用调试模式                   | `false`     | `WT_DEBUG`    |
-| `--path`       | 自定义回调端点路径                | `/callback` | `WT_PATH`     |
-| `--token`      | 在微信注册的回调令牌               | -           | `WT_TOKEN`    |
-| `--aes-key`    | 在微信注册的 Base64 编码的 AES 密钥 | -           | `WT_AES_KEY`  |
-| `--topic`，`-t` | 要处理的回调主题。详情请见下文          | -           | -             |
-| `--mqtt-url`   | MQTT 经纪商网址。详情见下文         | -           | `WT_MQTT_URL` |
+| 标志              | 描述                       | 默认          | 环境                      |
+|-----------------|--------------------------|-------------|-------------------------|
+| `--port`        | 要监听的端口                   | `8080`      | `WT_PORT`               |
+| `--debug`       | 启用调试模式                   | `false`     | `WT_DEBUG`              |
+| `--path`        | 自定义回调端点路径                | `/callback` | `WT_PATH`               |
+| `--token`       | 在微信注册的回调令牌               | -           | `WT_TOKEN`              |
+| `--aes-key`     | 在微信注册的 Base64 编码的 AES 密钥 | -           | `WT_AES_KEY`            |
+| `--topic`, `-t` | 需要订阅的回调信息类型              | -           | `WT_TOPICS`, `WT_TOPIC` |
+| `--mqtt-url`    | MQTT 经纪商网址。详情见下文         | -           | `WT_MQTT_URL`           |
 
 下面显示了使用该镜像的示例。
 
@@ -49,7 +49,8 @@ docker run -d \
     -e WT_TOKEN=token \
     -e WT_AES_KEY=base64_encoded_aes_key \
     -e WT_MQTT_URL=tcp://localhost:1883 \
-    ghcr.io/imulab/wetriage:latest WeTriage server -t suite_ticket_info
+    -e WT_TOPICS=suite_ticket_info,create_auth_info \
+    ghcr.io/imulab/wetriage:latest
 ```
 
 ## 消息话题
