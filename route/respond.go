@@ -26,7 +26,11 @@ type successTextRespondStrategy struct{}
 
 func (_ successTextRespondStrategy) supports(t topic.Topic) bool {
 	switch t.Name() {
-	case topic.SuiteTicketInfoName: // add others
+	case topic.SuiteTicketInfoName,
+		topic.CreateAuthInfoName,
+		topic.ChangeAuthInfoName,
+		topic.CancelAuthInfoName,
+		topic.ResetPermanentCodeInfoName: // TODO: add approve_special_auth, cancel_special_auth
 		return true
 	default:
 		return false
